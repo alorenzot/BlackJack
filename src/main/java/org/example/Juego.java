@@ -30,7 +30,15 @@ public class Juego {
     }
 
     private void mostrarGanadores() {
-
+        if (banca.pasado()){
+            for (Jugador jugador : jugadores){
+                if (jugador.ganasA(banca)){
+                    System.out.println("\n¡El jugador " + jugador.getNombre() + " ha ganado!");
+                }
+            }
+        } else{
+            System.out.println("\n¡Gana la banca!");
+        }
     }
 
     private void juegaBanca() {
@@ -38,6 +46,10 @@ public class Juego {
         while (!banca.pasado() && !banca.ganasATodos(jugadores)) {
             banca.cogerCarta(baraja.quitarPrimera());
             System.out.println(banca);
+
+            try {
+                Thread.sleep(2000);
+            } catch (Exception e) {}
         }
     }
 

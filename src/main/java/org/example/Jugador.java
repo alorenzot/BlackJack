@@ -21,6 +21,8 @@ public class Jugador {
         return this.nombre;
     }
     public boolean ganasA(Jugador jugador){
+        if (getPuntuacion()>21) return false;
+        if (jugador.pasado())return true;
         return jugador.getPuntuacion()<getPuntuacion();
     }
     public boolean ganasATodos(Jugador...jugadores){
